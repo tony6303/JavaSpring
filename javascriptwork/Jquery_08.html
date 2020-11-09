@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>영화 포스터</title>
+    <style>
+        .container{
+            margin: 0 auto;
+            width: 90%;
+            display: grid;
+            border: 1px solid green;
+
+            text-align: center;
+            justify-content: space-around;
+            grid-template-columns: auto auto auto;
+        }
+        .container > div{
+            padding: 10px;
+            width: 250px;
+            height: 300px;
+            background-color: gray;
+            border: 1px solid black;
+            box-shadow: 0 0 3px 3px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>영화포스터</h1>
+    <button onclick="addMovie()">추가</button>
+    <hr/>
+    <div class="container" id="movie-list">
+              
+    </div>
+
+<script>
+    //번호 
+    var no = 2;
+
+    var movie = {
+        poster: "https://t1.daumcdn.net/movie/99a4d42206a028764e86c5bff8cf0021db985223",
+        title: "도굴",
+        rating: 9.1
+    }
+    
+    function addMovie(){
+        var movieItem = ``;
+        movieItem = movieItem + `<div id="movie-item-${no}">`;
+        movieItem = movieItem + `<div>`;
+        movieItem = movieItem + `<button onclick="deleteMovie(${no})">삭제</button>`;
+        movieItem = movieItem + `<img id="poster-${no}" src="${movie.poster}" width="100%" height="200px" alt="">`;
+        movieItem = movieItem + `</div>`;
+        movieItem = movieItem + `<div id="title-${no}">${movie.title}</div>`;
+        movieItem = movieItem + `<div id="rating-${no}">${movie.rating}</div>`;
+        movieItem = movieItem + `</div>`;
+
+        $("#movie-list").prepend(movieItem);
+        no = no + 1;
+    }
+
+    function deleteMovie(no){
+        $(`#movie-item-${no}`).remove();
+    }
+</script>
+</body>
+</html>

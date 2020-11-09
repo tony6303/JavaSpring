@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>영화 포스터</title>
     <style>
         .container{
@@ -39,5 +40,20 @@
             </div>
         </div>
     </div>
+
+<script>
+    function getMovie(){
+        var movie = {
+            poster: "https://t1.daumcdn.net/movie/99a4d42206a028764e86c5bff8cf0021db985223",
+            title: "도굴",
+            rating: 9.1
+        }
+
+        $("#movie-poster").attr("src",movie.poster);
+        $("#title").text(movie.title);
+        $("#rating").text(movie.rating);
+        console.log("버튼테스트");
+    }
+</script>
 </body>
 </html>

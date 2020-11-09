@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* header */
+.main{
+    padding-top: 50px;
+
+}
+ul li{
+    list-style-type: none;
+}
+.header{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 0 1px 0 black;
+    background-color: white;
+    z-index: 1;
+}
+
+.header-center{
+    display: flex;
+    width: 80%;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+#input-search{
+    text-align: center;
+}
+
+.header-ul{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0;
+}
+.header-ul li{
+    padding-right: 8px;
+}
+/* header end */
+
+.main__section{
+    position: relative;
+    padding-top: 60px;
+    margin: 0 auto;
+    max-width: 935px;
+
+}
+.main__friendsList-box{
+    border: 1px solid green;
+
+    display: block;
+    position: relative;
+    width: 65%;
+    padding: 16px 0px;
+    margin-bottom: 24px;
+}
+
+.main__contents-box{
+    width: 65%;
+    border: 1px solid green;
+}
+
+.contents__profile-box{
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    border: 1px solid red;
+}
+.profile-img{
+    background-image: url("https://newsimg.hankookilbo.com/cms/articlerelease/2019/04/29/201904291390027161_3.jpg");
+    background-size: cover;
+    margin: 5px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+.contents-box{
+    width: auto;
+}
+
+.profile-name_dot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8px;
+    
+    border: 1px solid blue;
+}
+.contents__img-box{
+    display: flex;
+    justify-content: center;
+}
+.contents__img-box img{
+    display: block;
+    max-width: 100%;  
+}
+
+.contents__icons{
+    display: flex;
+    justify-content: space-between;
+}

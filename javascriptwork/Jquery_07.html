@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        #comment-list{
+            border: 5px solid black;
+            padding: 10px;
+        }
+
+        #comment-list span{
+            display: inline-block;
+            border: 2px solid red;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>  
+    <input type="text" id="input-comment"/>
+    <button onclick="addComment()">댓글 작성</button>
+    <hr/>
+    <div id="comment-list">
+        <div id="item-1">
+            <span id="comment-1">댓글1</span>
+            <span id="comment-delete-1" onclick="deleteComment(1)">삭제</span>
+        </div>
+        <div id="item-2">
+            <span id="comment-2">댓글2</span>
+            <span id="comment-delete-2" onclick="deleteComment(2)">삭제</span>
+        </div>
+    </div>
+</body>
+<script>
+    //append, prepend, after, before
+    // i =3 ;
+    no = 3;
+    function addComment(){
+        //get
+        var comment = $("#input-comment").val();
+
+        //set  
+        //문자열과 변수를 같이 사용해야할 때 편리한 도구 >> ` <<(backtick, 키보드 1 왼쪽 버튼)
+         /*
+            1. 백틱이 필요한 라인을 그대로 복붙한다.
+            <span id="comment-1">댓글1</span>
+            <span id="comment-delete-1" onclick="deleteComment(1)">삭제</span>
+
+            2. 변수로 바꾸어야 할 부분을 ${변수}로 직접 수정한다.
+            <span id="comment-${no}">댓글1</span>
+            <span id="comment-delete-${no}" onclick="deleteComment(${no})">삭제</span>
+        */
+
+        //한 줄에 쓰면 이렇게 됨
+        // $("#comment-list").prepend(`<div id=item-${id}> <span id=comment-${id}>${comment}</span> 
+        // <span id=comment-delete-${id} onclick="deleteComment(${id})">삭제</span> </div>`);
+
+        //한 줄에 쓰는건 보기 안좋으니 변수에 문자열 추가 하는방식으로
+        var commentitem = `<div id="item-${no}">`;
+        commentitem = commentitem + `<span id="comment-${no}">${comment}</span>`;
+        commentitem = commentitem + `<span id="comment-delete-${no}" onclick="deleteComment(${no})">삭제</span>`;
+        
+
+        $("#comment-list").prepend(commentitem);
+        no = no + 1;
+        
+        // $("#input-comment").val();
+    }
+
+    function deleteComment(id){
+        // $("#item-"+id).remove();
+        $(`#comment-${id}`).text("삭제된 댓글 입니다");
+    }
+</script>
+</html>
