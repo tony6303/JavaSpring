@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style>
+            /* 인라인블럭 */
+            .box{
+                display: inline-block;
+                border: 1px solid black;
+                height: 100px;
+                width: 200px;                                
+            }
+            /* 그냥 div 의 display는 block (부모의 영역 끝까지) */
+            /* text-align 은 inline 속성을 가져야만 적용된다 */
+            .container{
+                display: inline-block;
+                text-align: center;
+                border: 3px green solid;
+                width: 800px;
+            }
+            .outer{
+                margin: 0px auto; /* 세로 가로 */
+                text-align: center;
+                border: 1px red solid;
+                width: 80%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="outer">
+            <div class="container"> <!-- box클래스의 div들이 글자(?)로 인식되어서 가운데 정렬이 가능하게 된다.-->
+                <div class="box">첫번째 박스</div>
+                <div class="box">두번째 박스</div>
+                <div class="box">세번째 박스</div>
+            </div>
+        </div>
+    </body>
+</html>

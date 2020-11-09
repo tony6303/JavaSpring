@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 포스터</title>
+    <style>
+        .container{
+            margin: 0 auto;
+            width: 80%;
+            display: flex;
+
+            text-align: center;
+            justify-content: center;
+        }
+        .movie-item{
+            padding: 10px;
+            width: 300px;
+            height: 500px;
+            background-color: gray;
+            border: 1px solid black;
+            box-shadow: 0 0 3px 3px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>영화포스터</h1>
+    <button onclick="getMovie()">영화 불러오기</button>
+    <div class="container">
+        <div class="movie-item">
+            <div id="poster">
+                <img id="movie-poster" src="#" width="290px" height="300px" alt="">
+            </div>
+            <div id="title">
+                제목임시
+            </div>
+            <div id="rating">
+                평점임시
+            </div>
+        </div>
+    </div>
+</body>
+</html>

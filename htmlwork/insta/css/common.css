@@ -1,0 +1,40 @@
+body{
+    background-color: #FAFAFA;
+}
+
+.mt10{
+    margin-top: 10px;
+}
+
+.mb10{
+    margin-bottom: 10px;
+}
+
+.btn1{
+    width: 258px;
+    height: 30px;
+    background-color: #B2DFFC;
+    color: white;
+    font-weight: 800;
+    border-style: none;
+    border-radius: 6px;
+}
+
+.a-link-facebook{
+    color: #385185;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.a-link-forget{
+    text-decoration: none;
+    font-size: 12px;
+    color: black;
+}
+
+.a-link-join{
+    text-decoration: none;
+    font-size: 14px;
+    color: #0095F6;
+}

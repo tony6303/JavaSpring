@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>제이쿼리 예제3</title>
+    <style>
+        h1, h2{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <span>
+        <h1>날 사라지게 해보세요</h1>
+    </span>
+    <span>
+        <h2>다시 불러오기</h2>
+    </span>
+    
+    <script>
+        $("h1").click(function(){
+            $("h1").fadeOut();
+        })
+
+        $("h2").click(function(){
+            $("h1").fadeIn();
+        })
+    </script>
+</body>
+</html>

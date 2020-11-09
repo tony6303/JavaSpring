@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>jquery 예제1</title>
+    <style>
+        div{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">gkgk</div>
+    <div id="box2">glgl</div>
+    <button onclick="show()">보이기</button>
+    <script>
+        function show(){
+            $("div").show();
+        }
+        // ready()함수는 그림이 다 그려지면 실행된다
+        // ready() 의 인수에는 실행될 함수가 들어가야 함
+        $(document).ready(function(){
+            alert("test");
+        });
+        
+    </script>
+    
+
+    <script>
+        $(".box1").hide();
+        $("#box2").hide();
+
+    </script>
+</body>
+</html>

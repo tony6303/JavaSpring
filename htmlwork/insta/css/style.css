@@ -1,0 +1,9 @@
+@import url("common.css");
+@import url("login.css");
+@import url("footer.css");
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}

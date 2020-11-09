@@ -1,0 +1,151 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    display: flex;
+    padding: 0px 10px;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.header .header__l-title{
+    font-size: 24px;
+    font-weight: 800;   
+}
+
+.header .header__m-title{
+    font-size: 11px;
+    color: gray;
+}
+
+.header__icon__ul{
+    display: flex;
+    list-style-type: none;
+}
+.header__icon__ul li{
+    margin-right: 20px;
+}
+.main__img{
+    position: relative;
+    padding: 0px 10px;
+}
+
+.main__img .main__background-image{
+    background-image: url("../images/main.jpg");
+    position: relative;
+    height: 315px;
+    margin-top: 50px;
+    background-size: 100%;
+    background-position-y: center;
+    border-radius: 25px;
+}
+.main__img .main__like{
+    display: flex;
+    position: absolute;
+    background-color: white;
+    background-position: right;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 25px;
+    top: 25px;
+    right: 25px;    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+
+.main__img .whiteboard{
+    
+    position: absolute;
+    background-color: white;
+    width: 90%;
+    top: 250px; 
+    justify-content: center;
+    margin: 0px 75px;
+    border-radius: 25px;
+    box-shadow: 0 0 5px 0 gray;
+}
+
+.whiteboard .main__whiteboard__l-title{
+    font-size: 20px;
+    font-weight: 800;
+    padding: 10px 0px;
+    margin: 0px 20px;
+}
+
+.whiteboard .main__whiteboard__m-title{
+    font-size: 16px;
+    color: gray;
+    padding: 5px 0px;
+    margin: 0px 20px;
+}
+
+.line{
+    margin: 5px 20px;  
+}
+
+.whiteboard .main__whiteboard__contest{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0px;
+}
+.recommended{
+    padding: 0px 10px;
+    margin-top: 160px;
+}
+.recommended__title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.recommended .recommended__title__l-title{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.recommended .recommended__title__s-title{
+    font-size: 16px;
+    color: gray;
+
+}
+
+.recommended-box{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+.recommended-box__card{
+    height: 180px;
+    
+    
+}
+
+/* 이미지 시작위치를 어떻게 정하는지 잘 모르겠음 */
+.recommended-box__card .sub-img{
+    background-image: url("../images/sub.jpg");
+    background-position: center;    
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 60%;
+    width: 100%;
+    border-radius: 30px 30px 0 0;
+    
+}
+.recommended__text-box{
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.recommended-box__card .sub-text{
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.recommended-box__card .sub-text2{
+    font-size: 10px;
+    color: gray;
+}

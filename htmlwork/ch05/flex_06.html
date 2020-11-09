@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+            }
+            .container{
+                width: auto;
+                background-color: gray;
+            }
+            .header{
+                background-color: orange;
+                text-align: center;
+                margin: 10px;
+            }
+            .contents{
+                background-color: lightgreen;
+                text-align: center;
+                margin: 10px;
+            }
+            .button{
+                display: flex;
+                background-color: lightblue;
+                justify-content: center;
+                margin: 10px;
+            }
+            .image-view{
+                display: flex;
+                width: 1000px;
+                background-color: plum;
+                flex-direction: column;
+            }
+            .text{
+                text-align: center;
+            }
+            .image-container{
+                display: flex;
+                justify-content: space-around;
+            }
+            div.image1{
+                background-image: url("images/london.jpg");
+                background-size: cover;
+                width: 250px;
+                height: 250px;
+                margin: 10px 0px;
+                
+            }
+            div.image2{
+                background-image: url("images/napa.jpg");
+                background-size: cover;
+                width: 250px;
+                height: 250px;
+                margin: 10px 0px;
+                
+            }
+            div.image3{
+                background-image: url("images/new-york.jpg");
+                background-size: cover;
+                width: 250px;
+                height: 250px;
+                margin: 10px 0px;
+            }
+            .image-container img{
+                width: 250px;
+                height: 250px;
+                object-fit: fill;
+                margin: 10px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">제목</div>
+                <div class="contents">콘텐츠</div>
+                    <article class="image-view">                                               
+                        <div class="text">class image-view width 1000px (pink)</div> 
+                        <div class="text">background-image , background-size : cover</div>
+                        <div class="image-container">
+                            <div class="image1"></div>
+                            <div class="image2"></div>
+                            <div class="image3"></div>
+                        </div>
+                    </article>
+                <div class="button"><button>버튼</button></div>
+
+                <hr>
+                
+            <div class="header">제목2</div>
+                <div class="contents">콘텐츠2</div>
+                    <article class="image-view">
+                        <div class="text">class image-view width 1000px (pink)</div> 
+                        <div class="text">selector img , object-fit : fill</div>
+                        <div class="image-container">
+                            <div class="image4"><img src="images/san-francisco.jpg" alt=""></div>
+                            <div class="image5"><img src="images/san-francisco-2.jpg" alt=""></div>
+                            <div class="image6"><img src="images/sonoma.jpg" alt=""></div>
+                        </div>
+                    </article>
+                <div class="button"><button>버튼</button></div>
+        </div> <!--container 끝-->
+        
+    </body>
+</html>

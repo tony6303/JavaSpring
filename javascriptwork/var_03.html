@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input id="n1" type="text"/>
+    <input id="n2" type="text"/>
+    <button onclick="add()">클릭</button>
+    <hr/>
+    <div>
+        <span>합 : </span>
+        <span id="s1"></span>
+    </div>
+    <script>
+        function add(){
+            var n1El = document.querySelector("#n1");
+            console.log(n1El.value);
+
+            var n2El = document.querySelector("#n2");
+            console.log(n2El.value)
+            // alert("더하기");
+
+            var sum = Number(n1El.value) + Number(n2El.value);
+
+            document.getElementById("s1").innerHTML = sum;
+        }
+        
+    </script>
+
+    
+</body>
+</html>

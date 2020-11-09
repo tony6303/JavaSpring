@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            body{
+                position: relative;
+            }
+            .box1{
+                position: relative; 
+                width:300px;
+                height:300px;
+                background-color: yellow; 
+                display: inline-block;
+            }
+            /* absolute 는 도화지가 한 장 더 생긴다. */
+            .box2{
+                /* absolute의 부모가 relative 라면 부모의 위치속성과 관계를 갖게된다. */
+                position: absolute;
+                top: 50px;
+                left: 50px;
+                width:200px;
+                height:200px;
+                background-color: red; 
+                display: inline-block;
+
+            }
+            .box2:hover{
+                background-color: turquoise;
+            }
+            
+        </style>
+    </head>
+    <body>
+        의미없는글자들
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    
+    </body>
+</html>
+
+

@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>        
+        header{
+            background-color: yellow;
+            height: 80px;
+        }
+        /* 콘텐츠 스타일 시작 */
+        .content{
+            display: flex;
+            flex-direction: row; /* 기본값 */
+            justify-content: space-between;
+            height: 500px;
+        }
+            .content nav{
+                background-color: rgb(167, 170, 5);            
+                width: 350px;
+            }
+            .content aside{
+                background-color: red;
+                width: 350px;
+            }
+            /* 메인 스타일 시작 */
+            .content main{
+                flex-direction: column;
+                background-color: green;
+                width: 800px;
+            }
+                .mini-head{
+                    background-color: green;
+                }
+                .mini-main{
+                    background-color: white;
+                }
+                .mini-footer{
+                    background-color: red;
+                }
+                /* 메인 스타일 끝 */
+        /* 콘텐츠 스타일 끝 */
+        footer{
+            background-color: pink;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            header
+        </header>
+        <section class="content">
+            <nav>
+                nav
+            </nav>
+            <main>
+                <div class="mini-head">mini-head</div>
+                <div class="mini-main">mini-main</div>
+                <div class="mini-footer">mini-footer</div>
+            </main>
+            <aside>
+                aside
+            </aside>
+        </section>
+        <footer>
+            footer
+        </footer>
+    </div>
+</body>
+</html>

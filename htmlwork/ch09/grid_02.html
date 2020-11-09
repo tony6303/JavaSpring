@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+                border: 0px;
+                box-sizing: border-box;
+            }
+            .box-container{
+                display: grid;                
+                /* 비율을 1:1:1:1 로 설정 다른 언어에서 weight 같은느낌 */
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+            .box{
+                
+                border: 5px solid black;
+                height: 200px;
+                
+                margin-bottom: 10px;
+                
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box-container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </body>
+</html>
