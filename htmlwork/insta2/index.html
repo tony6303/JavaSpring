@@ -5,10 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <div class="header">
@@ -21,24 +23,80 @@
             </div>
             <div class="header__icons">
                 <ul class="header-ul">
-                    <li>홈</li>
-                    <li>메시지</li>
-                    <li>탐색</li>
-                    <li>좋아요</li>
-                    <li>프로필</li>
+                    <li><i class="fas fa-home fa-2x"></i></li>
+                    <li><i class="far fa-paper-plane fa-2x"></i></li>
+                    <li><i class="far fa-compass fa-2x"></i></li>
+                    <li><i class="far fa-heart fa-2x"></i></li>
+                    <li><a href="profile.html"><img class="profile-img" src="https://newsimg.hankookilbo.com/cms/articlerelease/2019/04/29/201904291390027161_3.jpg" alt=""></a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="main">
+        
         <div class="main__section">
             <div class="main__friendsList-box">
-                ddddddddddddddddddddddd
+                <ul class="friendsList">    
+                    <li></li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    <li class=""><div class="friends-img-bg"><img class="friends-img" src="https://s0.2mdn.net/simgad/2502124690380305101" alt=""></div>이대엽</li>
+                    
+                  </ul>
             </div>
             <div class="main__contents-box">
                 <div class="contents__profile-box">
-                    <div class="profile-img">
-                        
+                    <div class="profile-img-bg">
+                        <img class="profile-img" src="https://newsimg.hankookilbo.com/cms/articlerelease/2019/04/29/201904291390027161_3.jpg" alt="">
+                    </div>
+                    <div class="profile-name_dot">
+                        <div class="profile-name">
+                            닉네임
+                        </div>
+                        <div class="profile-dot">
+                            <b>. . . </b>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box">
+                    <div class="contents__img-box">
+                        <img src="https://images.mypetlife.co.kr/content/uploads/2019/08/16164457/p-t-YCNTEFKoYI-unsplash.jpg" alt="">
+                    </div>
+                    <div class="contents__icons">
+                        <div class="icons_left">
+                            <i class="far fa-heart fa-2x"></i><i class="far fa-paper-plane fa-2x"></i><i class="far fa-comment fa-2x"></i>
+                        </div>
+                        <div class="icons_right">
+                            <i class="far fa-bookmark fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="likes">
+                        좋아요 67개
+                    </div>
+                    <div class="name_contents">
+                        <b>이름</b> 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                    </div>
+                    <div class="times_ago">3일전</div>
+                </div>
+                <div class="comments-box d-flex ">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" placeholder="댓글 달기..." />
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="write_comment btn ">게시</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main__contents-box">
+                <div class="contents__profile-box">
+                    <div class="profile-img-bg">
+                        <img class="profile-img" src="https://newsimg.hankookilbo.com/cms/articlerelease/2019/04/29/201904291390027161_3.jpg" alt="">
                     </div>
                     <div class="profile-name_dot">
                         <div class="profile-name">
@@ -61,11 +119,42 @@
                             책갈피
                         </div>
                     </div>
-                    <div>
+                    <div class="likes">
                         좋아요 67개
+                    </div>
+                    <div class="name_contents">
+                        <b>이름</b> 내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                    </div>
+                    <div class="times_ago">3일전</div>
+                </div>
+                <div class="comments-box d-flex ">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" placeholder="댓글 달기..." />
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="write_comment btn ">게시</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-top">
+            <ul>
+                <li>소개</li>
+                <li>블로그</li>
+                <li>채용 정보</li>
+                <li>도움말</li>
+                <li>API</li>
+                <li>개인정보처리방침</li>
+                <li>약관</li>
+                <li>인기 계정</li>
+                <li>해시태그</li>
+                <li>위치</li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            © 2020 Instagram from Facebook
         </div>
     </div>
 </body>

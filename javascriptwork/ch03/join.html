@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">블로그</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="join.html">회원가입</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">로그인</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">오시는길</a>
+            </li>    
+          </ul>
+        </div>  
+      </nav>
+      
+<div class="container my-5">
+  <h2>회원가입</h2>
+  <form action="login.html">
+    <div class="form-group">
+      <input type="text" class="form-control" id="username" placeholder="Enter Username" name="Username">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+        <label class="custom-control-label" for="switch1">동의하시겠습니까?</label>
+      </div>
+    <button type="submit" class="btn btn-primary my-3">회원가입 완료</button>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "javascriptwork"
+		},
+		{
+			"path": "htmlwork"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "javascriptwork"
+	}
+}
