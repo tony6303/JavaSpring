@@ -1,85 +1,80 @@
-*{
-    padding: 0;
-    margin: 0;
-    border: 1px solid green;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid green; */
+  box-sizing: border-box;
 }
-.header{
-    position: relative;
-
+.header {
+  position: relative;
 }
-.nav{
-    display: flex;    
-    position: absolute;
-    justify-content: space-between;
-    font-weight: bold;
-    width: 100%;
-    padding: 30px 30px;
-}
-
-.nav .titlename{
-    font-size: 36px;
-}
-.nav__menu{
-    display: flex;
-    justify-content: space-around;
+.nav {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 100%;
+  padding: 30px 30px;
 }
 
-.nav__menu li{
-    margin: 0px 20px;
+.nav .titlename {
+  font-size: 36px;
+}
+.nav__menu {
+  display: flex;
+  justify-content: space-around;
 }
 
-ul li{
-    list-style-type: none;
-    margin:0px 10px;
-}
-.background{
-    display: flex;
-   
-    
+.nav__menu li {
+  margin: 0px 20px;
 }
 
-.background-img{
-    background-image: url("../images/vacation.jpg");
-    width: 50%;
-    background-size: 120% 100%;
-    height: 730px;
-    border-bottom: 1px solid gray;
+ul li {
+  list-style-type: none;
+  margin: 0px 10px;
 }
-.pink-box{
-    display: flex;
-    
-    flex-direction: column;
-    width: 50%;
-    height: 730px;
-}
-.background-pink{
-    background-color: #F8ECEB;
-    height: 630px;
+.background {
+  display: flex;
 }
 
-.pink-box .l-title{
-    position: absolute;
-    top: 120px;
-    right: 250px;
-    font-size: 80px;
-    font-weight: bold;
+.background-img {
+  background-image: url("../images/vacation.jpg");
+  width: 50%;
+  background-size: 120% 100%;
+  height: 730px;
+  border-bottom: 1px solid gray;
+}
+.pink-box {
+  display: flex;
+
+  flex-direction: column;
+  width: 50%;
+  height: 730px;
+}
+.background-pink {
+  background-color: #f8eceb;
+  height: 630px;
 }
 
-.pink-box .bottom__ul{
-    position: absolute;
-    display: flex;
-    width: 50%;
-    height: 100px;
-    top: 630px;
-    padding: 20px;
-    justify-content: space-between;
-    align-items: center ;
-    border-bottom: 1px solid gray;
-    
+.pink-box .l-title {
+  position: absolute;
+  top: 120px;
+  right: 250px;
+  font-size: 80px;
+  font-weight: bold;
 }
 
-.bottom__ul__ul{
-    display: flex;
-    
+.pink-box .bottom__ul {
+  position: absolute;
+  display: flex;
+  width: 50%;
+  height: 100px;
+  top: 630px;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.bottom__ul__ul {
+  display: flex;
 }

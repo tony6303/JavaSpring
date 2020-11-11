@@ -1,0 +1,52 @@
+@import url("common.css");
+
+.main-center-box {
+  max-width: 935px;
+  padding: 30px 20px 0;
+  margin: 0px auto;
+}
+
+.main-header {
+  display: flex;
+}
+.modal-body {
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+
+.my-profile-img {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-box-img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+.profile-name {
+  color: #262626;
+  font-size: 28px;
+}
+
+.my-profile-box-top {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.my-profile-box-top > * {
+  margin-right: 15px;
+}
+
+.my-profile-box-middle {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.my-profile-box-middle > * {
+  margin-right: 15px;
+}
+.main-section ul {
+  display: flex;
+  justify-content: center;
+}
