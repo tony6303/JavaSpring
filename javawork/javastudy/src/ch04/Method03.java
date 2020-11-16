@@ -14,7 +14,7 @@ public class Method03 {
 		// TODO Auto-generated method stub
 		Cal.add(5,Cal.minus(10,5));
 		
-		Cal.minus(10, 5);
+		
 	}
 
 }

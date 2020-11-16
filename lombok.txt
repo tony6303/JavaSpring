@@ -1,0 +1,5 @@
+1. java -jar lombok.jar
+2. install IDE ( STS.exe )
+3. STS configure build path
+
+

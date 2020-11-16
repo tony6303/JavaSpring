@@ -15,7 +15,7 @@ public class Var04 {
 		System.out.println(n[2]);
 		System.out.println(n);
 		
-		char[] s = {'°¡', '³ª', '´Ù'};
+		char[] s = {'ê°€','ë‚˜','ë‹¤'};
 		
 		System.out.println(s[0]);
 		System.out.println(s[1]);
