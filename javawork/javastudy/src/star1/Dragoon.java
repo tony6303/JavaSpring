@@ -1,10 +1,11 @@
 package star1;
 
-public class River extends StarUnit{
+public class Dragoon extends StarUnit {
 	private String name;
 	private int hp;
 	private int attack;
-	public River(String name, int hp, int attack) {
+	
+	public Dragoon(String name, int hp, int attack) {
 		this.name = name;
 		this.hp = hp;
 		this.attack = attack;

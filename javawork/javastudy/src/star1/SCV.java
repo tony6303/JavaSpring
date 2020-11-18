@@ -1,10 +1,10 @@
 package star1;
 
-public class River extends StarUnit{
+public class SCV extends StarUnit {
 	private String name;
 	private int hp;
 	private int attack;
-	public River(String name, int hp, int attack) {
+	public SCV(String name, int hp, int attack) {
 		this.name = name;
 		this.hp = hp;
 		this.attack = attack;
@@ -27,6 +27,6 @@ public class River extends StarUnit{
 	public void setAttack(int attack) {
 		this.attack = attack;
 	}
-	
+ 
 	
 }
