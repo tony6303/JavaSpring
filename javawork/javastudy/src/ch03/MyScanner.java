@@ -13,7 +13,6 @@ public class MyScanner {
 		try {
 			return br.readLine();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("괜찮아");
 			return "";

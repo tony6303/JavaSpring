@@ -6,7 +6,7 @@ interface Helloable{
 class AA implements Helloable{
 	@Override
 	public void 안녕() {
-		// TODO Auto-generated method stub
+		// 
 		System.out.println("반갑습니다");
 	}
 }
@@ -26,7 +26,7 @@ public class Ex123 {
 			
 			@Override
 			public void 안녕() {
-				// TODO Auto-generated method stub
+				// 
 				System.out.println("방가워요");
 			}
 		});

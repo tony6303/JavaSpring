@@ -1,17 +1,17 @@
 package ch02;
 
-//Å¬·¡½º ÀÚ·áÇü
+//Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½
 class Car{
 	static int power = 2000;
-	static String color = "ÇÏ¾á»ö";
-	static String name = "¼Ò³ªÅ¸";
-	static String type = "½Â¿ëÂ÷";
+	static String color = "ï¿½Ï¾ï¿½ï¿½";
+	static String name = "ï¿½Ò³ï¿½Å¸";
+	static String type = "ï¿½Â¿ï¿½ï¿½ï¿½";
 }
 
 public class Var07 {
 	static int power = 3000;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		System.out.println(Car.power);
 		System.out.println(Car.color);
 		System.out.println(Car.name);

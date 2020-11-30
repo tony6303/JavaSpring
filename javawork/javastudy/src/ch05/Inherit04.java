@@ -34,7 +34,7 @@ class Tiger3 implements Animal3{
 class Monkey3 implements Animal3{
 	@Override
 	public void sound() {
-		// TODO Auto-generated method stub
+		// 
 		System.out.println("몽몽");
 	}
 }
@@ -43,7 +43,7 @@ public class Inherit04 {
 		a.sound();
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		//자기자신의 클래스의 static을 호출할 때는 클래스명 생략가능
 		start(new Dog3());
 		start(new Cat3());

@@ -1,7 +1,7 @@
 package ch02;
 
 class Zealot{
-	String name = "Áú·µ";
+	String name = "ï¿½ï¿½ï¿½ï¿½";
 	int attack = 10;
 	int armor = 5;
 	
@@ -11,8 +11,8 @@ class Zealot{
 public class Var08 {
 	static int hp = 200;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//heap¿¡ ¶ç¿ì´Â ¹æ¹ý
+		// 
+		//heapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		Zealot z = new Zealot();
 		System.out.println(z.name);
 		System.out.println(z.attack);
@@ -25,13 +25,13 @@ public class Var08 {
 		
 		z.attack = 50;
 		
-		System.out.println("º¯È­°üÂû");
+		System.out.println("ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½");
 		System.out.println(z.attack);
 		System.out.println(z2.attack);
 		
 		z.hp = 50; 
 		
-		System.out.println("º¯È­°üÂû");
+		System.out.println("ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½");
 		System.out.println(z.hp);
 		System.out.println(z2.hp);
 		System.out.println(hp);

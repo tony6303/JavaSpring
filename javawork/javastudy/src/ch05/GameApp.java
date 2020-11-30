@@ -7,7 +7,7 @@ public class GameApp {
 		c.브레이크();
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Truck t = new Truck();
 		start(t);
 	}

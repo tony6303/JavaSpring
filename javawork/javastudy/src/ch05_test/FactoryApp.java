@@ -6,7 +6,7 @@ import ch05.Factory;
 public class FactoryApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Factory f1 = new BlueCloth();
 		//같은 패키지에 있었으면 가능
 //		f1.색칠(); //부모 추상클래스의 추상메서드 동적바인딩

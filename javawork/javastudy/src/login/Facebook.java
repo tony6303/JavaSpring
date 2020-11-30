@@ -7,7 +7,7 @@ public class Facebook implements OAuth{
 	private String nickName;
 	
 	public Facebook() {
-		// TODO Auto-generated constructor stub
+		// 
 		this("facebook", "ssar@nate.com", "1234", "깨봉");
 	}
 
@@ -51,22 +51,20 @@ public class Facebook implements OAuth{
 	}
 	@Override
 	public String oAuthProvider() {
-		// TODO Auto-generated method stub
+		// 
 		return provider;
 	}
 	@Override
 	public String oAuthId() {
-		// TODO Auto-generated method stub
+		// 
 		return id;
 	}
 	@Override
 	public String oAuthPassword() {
-		// TODO Auto-generated method stub
 		return password;
 	}
 	@Override
 	public String oAuthNickName() {
-		// TODO Auto-generated method stub
 		return nickName;
 	}
 	

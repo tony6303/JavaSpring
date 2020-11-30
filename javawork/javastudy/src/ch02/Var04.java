@@ -3,7 +3,7 @@ package ch02;
 public class Var04 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		int n1 = 1;
 		int n2 = 2;
 		int n3 = 3;

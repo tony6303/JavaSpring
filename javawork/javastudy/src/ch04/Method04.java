@@ -1,8 +1,8 @@
 package ch04;
 
-//ctrl+shift+F ÄÚµåÁ¤·Ä
-//method ¾È¿¡ method¸¦ Á¤ÀÇÇÒ ¼ö ¾ø´Ù
-//º¯¼ö¿¡ ¸Þ¼­µå¸¦ ´ãÀ» ¼ö ¾ø´Ù.
+//ctrl+shift+F ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+//method ï¿½È¿ï¿½ methodï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 public class Method04 {
 	int money = 10000; //heap
 	
@@ -11,7 +11,7 @@ public class Method04 {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Method04 m = new Method04();
 		m.add(50000);
 		System.out.println(m.money);

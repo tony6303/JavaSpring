@@ -10,7 +10,7 @@ class Son extends Father{
 public class inherit01 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Son s = new Son();
 		//1. 변수를 찾으러 가면, 찾을 때 변수가 있으면 그 변수를 사용. 없으면 부모를 찾아 올라감.
 		System.out.println(s.money);

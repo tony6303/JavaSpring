@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class While01 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Scanner sc = new Scanner(System.in);
 		
 		//Daemon process : 끝이없는 프로세스

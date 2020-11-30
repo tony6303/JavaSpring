@@ -7,7 +7,7 @@ public class Kakao implements OAuth{
 	private String name;
 	
 	public Kakao() {
-		// TODO Auto-generated constructor stub
+		// 
 		this("Kakao", "tony@nate.com", "9999", "대엽");
 		
 	}
@@ -53,22 +53,20 @@ public class Kakao implements OAuth{
 	
 	@Override
 	public String oAuthProvider() {
-		// TODO Auto-generated method stub
+		// 
 		return provider;
 	}
 	@Override
 	public String oAuthId() {
-		// TODO Auto-generated method stub
+		// 
 		return id;
 	}
 	@Override
 	public String oAuthPassword() {
-		// TODO Auto-generated method stub
 		return pass;
 	}
 	@Override
 	public String oAuthNickName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 }

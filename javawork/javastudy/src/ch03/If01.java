@@ -3,7 +3,7 @@ package ch03;
 public class If01 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		if(true) {
 			System.out.println("조건 true실행됨");
 		}

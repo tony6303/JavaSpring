@@ -6,7 +6,7 @@ public class CalculatorApp {
 	//그 결과값을 숫자5로 나누고
 	//그 결과값에 100을 뺀 값을 화면에 출력하시오.
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Calculator c = new Calculator();
 		System.out.println(c.minus(c.divid(c.multi(20, c.add(5, 10)), 5), 100));
 		

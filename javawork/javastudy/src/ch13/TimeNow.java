@@ -30,7 +30,7 @@ class TimeNowThread implements Runnable{
 				secLabel.setText(Integer.toString(now.getSecond()));
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				// 
 				e.printStackTrace();
 			}
 		}
@@ -64,7 +64,7 @@ public class TimeNow extends JFrame{
 		tnt.run();
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		new TimeNow();
 	}
 

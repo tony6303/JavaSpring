@@ -11,7 +11,7 @@ class Doctor extends Job{
 public class Array02 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Job[] job = new Job[2];
 		job[0] = new Police();
 		job[1] = new Doctor();

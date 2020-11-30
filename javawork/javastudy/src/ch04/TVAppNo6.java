@@ -24,7 +24,7 @@ class TV{
 public class TVAppNo6 {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		new TV();
 		new TV("삼성");
 		new TV(65, "삼성");

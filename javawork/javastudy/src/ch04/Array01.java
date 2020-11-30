@@ -6,7 +6,7 @@ class User{
 	
 	
 	public User() {
-		// TODO Auto-generated constructor stub
+		// 
 	}
 	public User(int id, String name, String phone) {
 		super();
@@ -38,7 +38,7 @@ class User{
 public class Array01 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		User[] users = new User[3];
 		
 		users[0] = new User(1, "홍길동", "01012345678");

@@ -1,21 +1,21 @@
 package ch02;
 
-//int long double char boolean String []¹è¿­ 
-//ÀÌ¹ø¿£ ´ë¸ÁÀÇ Å¬·¡½º
+//int long double char boolean String []ï¿½è¿­ 
+//ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class Var06 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		
 		int power = 2000;
-		String color = "ÇÏ¾á»ö";
-		String name = "¼Ò³ªÅ¸";
-		String type = "½Â¿ëÂ÷";
+		String color = "ï¿½Ï¾ï¿½ï¿½";
+		String name = "ï¿½Ò³ï¿½Å¸";
+		String type = "ï¿½Â¿ï¿½ï¿½ï¿½";
 
 		int power2 = 3000;
-		String color2 = "°ËÁ¤»ö";
+		String color2 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 		String name2 = "BMW";
-		String type2 = "½ºÆ÷Ã÷Ä«";
+		String type2 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä«";
 		
 	}
 

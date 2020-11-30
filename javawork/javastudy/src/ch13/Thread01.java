@@ -11,7 +11,7 @@ class Another extends Thread{
 				System.out.println("run" + i);
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				// 
 				e.printStackTrace();
 			}
 		}
@@ -34,7 +34,7 @@ public class Thread01 {
 				System.out.println("main" + i);
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				// 
 				e.printStackTrace();
 			}
 		}

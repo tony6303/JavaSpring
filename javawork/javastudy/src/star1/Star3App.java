@@ -10,7 +10,7 @@ public class Star3App {
 		System.out.println(u2.getName()+" 체력 :"+u2.getHp());
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Dark d = new Dark("닥템",70,50);
 		Dragoon dra = new Dragoon("드라군",100,20);
 		Marine m = new Marine("마린",40,5);

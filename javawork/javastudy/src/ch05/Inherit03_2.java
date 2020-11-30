@@ -29,7 +29,6 @@ public class Inherit03_2 {
 		a.sound();
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Dog2 d = new Dog2();
 		Inherit03_2.start (d);
 		

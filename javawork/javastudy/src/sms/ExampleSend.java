@@ -8,7 +8,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class ExampleSend {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		 	문자전송("01066527321","테스트" );
 		 	
 		  }

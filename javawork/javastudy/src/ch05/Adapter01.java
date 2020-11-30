@@ -21,7 +21,7 @@ class 백종원 extends 요리사Adapter{
 
 	@Override
 	public void 요리() {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 	

@@ -19,7 +19,7 @@ class Tv2{
 public class TvApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Tv2 myTV = new Tv2("LG",2017,32);
 		myTV.show();
 	}

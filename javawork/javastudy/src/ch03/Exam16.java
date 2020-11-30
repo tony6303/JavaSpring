@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Exam16 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		
 		String user;
 		String str[] = {"가위", "바위", "보"};

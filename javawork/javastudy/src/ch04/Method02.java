@@ -11,7 +11,7 @@ class Dog{
 public class Method02 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Dog d1 = new Dog();
 		
 		//d1.배고픔 =10; 이렇게 변수를 바꿔버리면 마법이라서 안된다

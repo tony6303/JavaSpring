@@ -6,7 +6,7 @@ public class Cat3App {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Cat3 c = new Cat3();
 		
 		c.setAge(5);

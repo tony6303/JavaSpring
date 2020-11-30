@@ -1,16 +1,16 @@
 package ch04;
 
-//ÀÚ¹Ù Æ¯Â¡ : ¸ðµçÄÚµå´Â class ³»ºÎ¿¡ ÀÛ¼ºÇØ¾ßÇÑ´Ù.
+//ï¿½Ú¹ï¿½ Æ¯Â¡ : ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ class ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Û¼ï¿½ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½.
 public class Method01 {
 	
 	static void add() {
-		System.out.println("¾Öµå");
+		System.out.println("ï¿½Öµï¿½");
 	}	
 	void sound() {
-		System.out.println("»ç¿îµå");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Method01.add();
 		
 		Method01 m = new Method01();

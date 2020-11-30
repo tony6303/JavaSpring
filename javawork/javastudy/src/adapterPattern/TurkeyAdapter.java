@@ -11,13 +11,13 @@ public class TurkeyAdapter implements Duck{
 
 	@Override
 	public void quack() {
-		// TODO Auto-generated method stub
+		// 
 		turkey.gobble();
 	}
 
 	@Override
 	public void fly() {
-		// TODO Auto-generated method stub
+		// 
 		turkey.fly();
 	}
 	

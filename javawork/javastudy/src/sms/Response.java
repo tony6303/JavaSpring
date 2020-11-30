@@ -13,7 +13,7 @@ public class Response {
 		return str.substring(str.indexOf("{")+1,str.lastIndexOf("}"));
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		String data = "{\"group_id\":\"R2GtX62GMhUpnaem\",\"error_list\":{\"1\":\"1062\"},\"success_count\":0,\"error_count\":1}\r\n"
 				+ "";
 		System.out.println(data);

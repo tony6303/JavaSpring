@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Exam {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Scanner sc = new Scanner(System.in);
 
 		//2장 3번 잘못품 

@@ -11,7 +11,7 @@ class Cal{
 public class Method03 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Cal.add(5,Cal.minus(10,5));
 		
 		

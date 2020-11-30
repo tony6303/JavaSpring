@@ -4,7 +4,7 @@ package ch06;
 public class Object01 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 
 		Object num = 1;
 		Object str = "문자열";
 		Object ch = "가";
