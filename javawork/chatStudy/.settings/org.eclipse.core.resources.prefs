@@ -1,3 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/client/MySocketClient.java=UTF-8
+encoding//src/client/MySocketClient2.java=UTF-8
 encoding//src/client/MySocketClient5.java=UTF-8
+encoding//src/client/MySocketClient6.java=UTF-8
+encoding//src/server/MyServerSocket.java=UTF-8
+encoding//src/server/MyServerSocket2.java=UTF-8
 encoding//src/server/MyServerSocket5.java=UTF-8
+encoding//src/server/MyServerSocket6.java=UTF-8

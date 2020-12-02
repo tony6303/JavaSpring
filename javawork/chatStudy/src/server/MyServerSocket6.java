@@ -9,14 +9,17 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.Vector;
 
-import protocol.Chat;
+import com.google.gson.Gson;
 
-public class MyServerSocket5 {
+import protocol.Chat;
+import protocol.RequestDto;
+
+public class MyServerSocket6 {
 	private ServerSocket serverSocket;
 	Vector<SocketThread> vc; //대기열 queue 다른클래스에서 써야하기때문에 private ㄴㄴ 
 	
 	//생성자
-	public MyServerSocket5() {
+	public MyServerSocket6() {
 		try {
 			serverSocket = new ServerSocket(10000);
 			vc = new Vector<>();
@@ -68,19 +71,20 @@ public class MyServerSocket5 {
 				String input = null;
 				while((input=reader.readLine()) != null) {
 					//전체 메시지 보내기
-					routing(input);
+					Gson gson = new Gson();
+					RequestDto dto = gson.fromJson(input, RequestDto.class);
+					routing(dto);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} //end of run
 		
-		private void routing(String input) {		
-			String gubun[] = input.split(":");
+		private void routing(RequestDto dto) {		
 			if(id == null) {
-				if(gubun[0].equals(Chat.ID)) {
+				if(dto.getGubun().equals(Chat.ID)) { // 초기 ID설정시 분기 ID:ssar1
 					// 변수에 ID 저장
-					id = gubun[1];
+					id = dto.getMsg();
 					writer.println("당신의 아이디는 "+id+"입니다.");
 					writer.flush();
 				}else {
@@ -88,18 +92,20 @@ public class MyServerSocket5 {
 					writer.flush();
 					return;
 				}
+
+
 			}
 			
-			if(gubun[0].equals(Chat.ALL)) { // 전체채팅 ALL:안녕
+			if(dto.getGubun().equals(Chat.ALL)) { // 전체채팅 ALL:안녕
 				for (int i = 0; i < vc.size(); i++) {
 					if(vc.get(i) != this) {
-						vc.get(i).writer.println(id+"-->"+gubun[1]);
+						vc.get(i).writer.println(id+"-->"+dto.getMsg());
 						vc.get(i).writer.flush();
 					}
 				}
-			} else if(gubun[0].equals(Chat.MSG)) { // MSG:ssar1:안녕
-				String tempId = gubun[1];
-				String tempMsg = gubun[2];
+			} else if(dto.getGubun().equals(Chat.MSG)) { // MSG:ssar1:안녕
+				String tempId = dto.getId();
+				String tempMsg = dto.getMsg();
 				
 				for (int i = 0; i < vc.size(); i++) {
 					if(vc.get(i).id != null && vc.get(i).id.equals(tempId)) {
@@ -114,6 +120,6 @@ public class MyServerSocket5 {
 	
 
 	public static void main(String[] args) {
-		new MyServerSocket5();
+		new MyServerSocket6();
 	}
 }
