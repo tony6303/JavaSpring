@@ -3,12 +3,17 @@ package bubblebubble;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import lombok.Data;
+
+@Data
 public class Player extends JLabel {
 	public Player player = this;
+	public BubbleObject bubbleObject;
 	public final static String TAG = "Player : "; // 안쓰더라도 고정
 	public ImageIcon icPlayerR, icPlayerL;
 	public int x = 55;
 	public int y = 535;
+	public int curY;
 	public boolean isRight = false;
 	public boolean isLeft = false;
 	public boolean isUp = false;
@@ -30,10 +35,19 @@ public class Player extends JLabel {
 					setIcon(icPlayerR);
 					isRight = true;
 					while (isRight) {
-						if (x <= 880) {
+						if (x <= 880 && y >= 20) {
+							// 천장에 닿지 않았을 때
 							x = x + 2;
 							setLocation(x, y);
+							System.out.println("x = " + x + "y = " + y);
+							if (x >= 342) {
+								// 선을 올라갈 때
+								y = y - 2;
+								setLocation(x, y);
+								System.out.println("x = " + x + "y = " + y);
+							}
 						}
+
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {
@@ -58,6 +72,13 @@ public class Player extends JLabel {
 						if (x >= 60) {
 							x = x - 2;
 							setLocation(x, y);
+							System.out.println("x = " + x + "y = " + y);
+						}
+						if (x >= 340 && y <= 535) {
+							// 선을 내려가기시작함과 동시에 천장에 닿지 않았을 때
+							y = y + 2;
+							setLocation(x, y);
+							System.out.println("x = " + x + "y = " + y);
 						}
 						try {
 							Thread.sleep(10);
@@ -73,16 +94,17 @@ public class Player extends JLabel {
 
 	public void moveUp() {
 		System.out.println(TAG + "moveUp()");
-		if(isUp == false) {
+		curY = getY();
+		if (isUp == false) { // 올라가는중이 아닐때, 올라감을 실행
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
-					isUp = true;
+					isUp = true; // 상태 : 올라가는중
 					while (true) {
-						if(y < 405) {
+						if (getY() < curY-130) {
 							break;
-						}				
-						System.out.println(y);
+						}
+						System.out.println("y = " + y);
 						y = y - 1;
 						setLocation(x, y);
 						try {
@@ -95,35 +117,38 @@ public class Player extends JLabel {
 					moveDown();
 				}
 			}).start();
-		}		
+		}
 	}
 
 	public void moveDown() {
 		System.out.println(TAG + "moveDown()");
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					while (true) {
-						isUp = true;
-						if(y > 534) {
-							break;
-						}
-						System.out.println(y);
-						y = y + 1;
-						setLocation(x, y);
-						try {
-							Thread.sleep(3);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+		curY = getY();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					isUp = true;
+					if (getY() > curY+130) {
+						break;
 					}
-					isUp = false;
+					System.out.println("y = " + y);
+					y = y + 1;
+					setLocation(x, y);
+					try {
+						Thread.sleep(3);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-			}).start();
-		}
+				isUp = false;
+			}
+		}).start();
+	}
+
 	public void moveJump() {
 		moveUp();
 	}
+
 	public void attack() {
 
 	}

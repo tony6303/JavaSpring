@@ -13,6 +13,7 @@ public class BubbleApp extends JFrame implements Initable {
 	public static final String TAG = "BubbleApp : ";
 	private JLabel laBackGround;
 	private Player player;
+	private BubbleObject bubbleobject;
 
 	public BubbleApp() {
 		// 작업환경 공유
@@ -25,8 +26,9 @@ public class BubbleApp extends JFrame implements Initable {
 
 	@Override
 	public void init() {
-		laBackGround = new JLabel(new ImageIcon("image/bg.png"));
+		laBackGround = new JLabel(new ImageIcon("image/bg1.png"));
 		player = new Player();
+		bubbleobject = new BubbleObject(player);
 	}
 
 	@Override
@@ -41,6 +43,7 @@ public class BubbleApp extends JFrame implements Initable {
 	@Override
 	public void batch() {
 		add(player);
+		add(bubbleobject);
 
 	}
 
@@ -55,7 +58,8 @@ public class BubbleApp extends JFrame implements Initable {
 					player.moveLeft();
 				}else if (e.getKeyCode() == KeyEvent.VK_UP) {
 					player.moveJump();
-				}
+				}else if (e.getKeyCode() == KeyEvent.VK_L)
+					bubbleobject.flying(player);
 			}
 
 			@Override
@@ -64,10 +68,15 @@ public class BubbleApp extends JFrame implements Initable {
 					player.isRight = false;
 				}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 					player.isLeft = false;
+				}else if (e.getKeyCode() == KeyEvent.VK_UP) {
+					player.isUp = true;
 				}
+				
 			}
 		});
+		
 	}
+	
 
 	public static void main(String[] args) {
 		new BubbleApp();
