@@ -58,9 +58,13 @@ public class BubbleApp extends JFrame implements Initable {
 					player.moveLeft();
 				}else if (e.getKeyCode() == KeyEvent.VK_UP) {
 					player.moveJump();
-				}else if (e.getKeyCode() == KeyEvent.VK_L)
+				}else if (e.getKeyCode() == KeyEvent.VK_L) {
 					bubbleobject.flying(player);
-			}
+				}else if (e.getKeyCode() == KeyEvent.VK_R) {
+					player.reset();
+				}
+				
+				}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
