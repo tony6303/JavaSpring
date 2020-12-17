@@ -80,7 +80,9 @@ public class BubbleApp extends JFrame implements Initable {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-
+				if (e.getKeyCode() == KeyEvent.VK_R) {
+					player.reset();
+				}
 				if (player.isMoveLock() == true) { // Move락이 걸려있으면 메서드실행안됨
 					return;
 				}

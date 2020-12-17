@@ -13,7 +13,9 @@ public class Player extends JLabel {
 	private ImageIcon icJumpR1, icJumpR2, icJumpR3, icJumpR4; // 우 점프 이미지
 	private ImageIcon icJumpL1, icJumpL2, icJumpL3, icJumpL4; // 좌 점프 이미지
 	private  int playerX = 300; // 캐릭터 기본 시작 X축
-	private  int playerY = 100; // 캐틱터 기본 시작 Y축
+	private  int playerY = 250; // 캐틱터 기본 시작 Y축
+	public int curY;
+	public int curX;
 	private int start = 0;
 
 	//좌우이동 Lock
@@ -114,6 +116,15 @@ public class Player extends JLabel {
 		System.out.println(playerX+"aa"+playerY);
 	
 	}
+	public void reset() {
+		curX = getPlayerX(); // 현재 X값을 알아내기 위한 지역변수
+		player.setMoveLock(false);
+		Thread positionReset = new Thread(new PositionReset());
+		positionReset.start();
+		System.out.println("reset");
+		
+	}
+	
 	
 	class RightMove implements Runnable { // Leftmove()랑 거의비슷
 		@Override
@@ -317,6 +328,21 @@ public class Player extends JLabel {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+			}
+		}
+	}
+	
+	class PositionReset implements Runnable{
+		@Override
+		public void run() {
+			
+			while (true) {				
+				if (curX != 100) { // X값이 초기위치 가아니면
+					player.setPlayerX(240); // 강제로 X, Y값 set
+					player.setPlayerY(200);
+					break;
+				}
+
 			}
 		}
 	}

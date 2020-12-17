@@ -1,0 +1,324 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Race</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style>
+	html,body,table{font-size:12px;}
+	fieldset{ padding:5px; margin:5px;}
+	#div_race {padding:10px 30px;}
+	#div_race ul{background-color:#abc; padding:0; margin:0; list-style-type:none; border:1px solid red;}
+	#div_race li{background-color:white; padding:0px; margin:2px; list-style-type:none; overflow:visible; margin-right:22px; }
+	#div_race div.line{ background-color:#aae; margin:2px 0;}
+	#div_race div.horse{ position:relative; z-index:1; background-color:blue; width:18px;height:18px; border:1px solid #666;
+text-align:center; line-height:18px; color:#fff;
+-webkit-transition: all 0.1s ease-out;
+-moz-transition: all 0.1s ease-out;
+-o-transition: all 0.1s ease-out;
+transition: all 0.1s ease-out;
+border-radius: 9px;
+-webkit-border-radius: 9px;
+-moz-border-radius: 8px;
+box-shadow: -0px 0px 10px gray;
+	}
+	#div_race .goal{background-color:red; color:#fff; text-align:center; line-height:18px; font-weight:bold}
+	#div_race td.result{text-align:center; font-weight:bold; background-color:#006666; color:#fff;}
+	
+	
+	#div_race .result_1{ color:#FC3;}
+	#div_race .result_2{ color:#999;}
+	#div_race .result_3{ color:#C63}
+	#div_race .label{ width:80%; font-size:12px; border:1px solid gray; text-align:center;}
+	
+	#div_race.state_0 div.line{}
+	#div_race.state_1 div.line{ background-color:#F39;}
+	#div_race.state_2 div.line{}
+	
+	#div_race.state_1 div.horse{
+		box-shadow: -5px 0px 5px blue;
+	}
+	
+	#div_race .line_0 .horse{ background-color:blue;	box-shadow: -0px 0px 10px blue;}
+	#div_race .line_1 .horse{ background-color:red; 	box-shadow: -0px 0px 10px red; }
+	#div_race .line_2 .horse{ background-color:green; 	box-shadow: -0px 0px 10px green;}
+	#div_race .line_3 .horse{ background-color:Aqua; 	box-shadow: -0px 0px 10px Aqua;}
+	#div_race .line_4 .horse{ background-color:Purple; 	box-shadow: -0px 0px 10px Purple;}
+	#div_race.state_1 .line_0 .horse{box-shadow: -5px 0px 5px blue;}
+	#div_race.state_1 .line_1 .horse{box-shadow: -5px 0px 5px red; }
+	#div_race.state_1 .line_2 .horse{box-shadow: -5px 0px 5px green;}
+	#div_race.state_1 .line_3 .horse{box-shadow: -5px 0px 5px Aqua;}
+	#div_race.state_1 .line_4 .horse{box-shadow: -5px 0px 5px Purple;}	
+	
+	#title{ font-size:20px; font-weight:bold}
+</style>
+</head>
+
+<body>
+<h1><a href="http://mins01.com">/</a> <a href="?">Race</a> [<a href="?" target="_blank">new</a>]</h1>
+<p>재미삼아 만든 경마! 
+말 이름을 바꿀 수 있어요.</p>
+<ul>
+	<li> 공대여자 만듬 (2012-06-19)</li>
+	<li>순수 클라이언트측 기능만 사용 (HTML+JS+CSS)</li>
+</ul>
+
+<fieldset>
+	<legend>설정창</legend>
+	<div style="float:left; text-align:center; width:50%;">
+<!--
+		<input type="button" value="초기화" onclick="Race.init()" />
+-->
+		<input type="button" value="시작" onclick="Race.initAndStart();" style="font-size:24px;padding:10px;"/>
+<br />
+		<input type="button" value="멈춤" onclick="Race.stop()" />
+		<input type="button" value="계속" onclick="Race.start()" />
+		<input type="button" value="결과재확인" onclick="Race.showResult()" />
+<br />
+		<input type="button" value="라인추가" onclick="Race.addLine()" />
+		<input type="button" value="라인삭제" onclick="Race.removeLine()" /><br />
+경기속도 : 
+<input type="button" value="매우빨리" onclick="Race.intervalTime=10;" />
+<input type="button" value="빨리" onclick="Race.intervalTime=50;" />
+<input type="button" value="보통" onclick="Race.intervalTime=100;" />
+<input type="button" value="느리게" onclick="Race.intervalTime=500;" />
+<input type="button" value="매우느리게" onclick="Race.intervalTime=1000;" /><br />
+이동거리폭 : 
+<input type="button" value="매우길게" onclick="Race.maxRange=20;" />
+<input type="button" value="길게" onclick="Race.maxRange=10;" />
+<input type="button" value="보통" onclick="Race.maxRange=5;" />
+<input type="button" value="짧게" onclick="Race.maxRange=3;" />
+<input type="button" value="매우짧게" onclick="Race.maxRange=1;" /><br />
+	</div>
+	<div style="float:left; width:50%;">
+		<ul>
+			<li>예제
+				<ul>
+					<li><a href="?race_title=누가+가장+한심해?&amp;labels=바보,멍청이,얼간이">바보,멍청이,얼간이</a></li>
+					<li><a href="?race_title=누가이겨?&amp;labels=건담,마징가Z,태권V">건담,마징가Z,태권V</a></li>
+					<li><a href="?race_title=오늘저녁은?&amp;labels=한식,중식,분식,편의점,한솥도시락,굶어">오늘저녁은?</a></li>
+				</ul>
+			</li>
+			<li>
+			  <form name="form_custom" action="" method="get">
+			  커스텀:<br />
+			    <input type="text" name="race_title" style="width:90%" value="커스텀경기"  />
+			    <textarea name="labels" cols="40" rows="5"  wrap="off" style="width:90%" >커스텀1,커스텀2
+커스텀3</textarea>
+			    <br />
+			    (,과 줄바꿈으로 구분)
+  <input type="submit" value="확인"/>
+		      </form>
+			</li>
+	    </ul>
+	</div>
+	<div style="clear:both"></div>
+</fieldset>
+<fieldset>
+<legend>경기 : <span id="title"></span></legend>
+	<div id="div_race">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+			<tbody>
+				<tr>
+					<td width="80" class="horse_name"><input type="text" class="label" /></td>
+					<td><div class="line">
+					<div class="horse" style="left:0%">H</div></div></td>
+					<td width="20" class="goal">G</td>
+					<td width="60" class="result"><span class="result"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</fieldset>
+<script type="text/javascript">
+var Race = {};
+Race.horses = []
+Race.results = [];
+Race.intervalTime = 100;
+Race.maxRange = 5;
+Race.state = -1;
+Race.endCnt = 0;
+Race.endIndexes = [];
+Race.labels = [];
+Race.dr = null;
+Race.title = '';
+Race.init = function(){
+	
+	Race.endIndexes = [];
+	Race.endCnt = 0;
+	Race.dr = document.getElementById('div_race');
+	var dr = Race.dr;
+	
+	Race.horses = [];
+	var t = dr.getElementsByTagName('div');
+	for(var i=0,m=t.length;i<m;i++){
+		var H = t[i];
+		if(H.className == 'horse'){
+			H.style.left = '0%';
+			H.race_stae = 0;
+			H.parentNode.className = "line line_"+(Race.horses.length%5);
+			Race.horses.push(H);
+		}
+	}
+	
+	Race.results = [];
+	var t = dr.getElementsByTagName('td');
+	for(var i=0,m=t.length;i<m;i++){
+		var R = t[i];
+		if(R.className == 'result'){
+			Race.results.push(R);
+			R.innerHTML = '준비';
+		}
+	}
+	
+	Race.labels = [];
+	var t = dr.getElementsByTagName('input');
+	for(var i=0,m=t.length;i<m;i++){
+		var L = t[i];
+		if(L.className == 'label'){
+			Race.labels.push(L);
+			if(L.value.length == 0){
+				L.value = (i+1)+'번마';
+			}
+		}
+	}	
+	Race.state = 0;	
+	Race.dr.className = "state_"+Race.state;	
+}
+Race.timer = null;
+Race.initAndStart = function(){
+	Race.init();
+	setTimeout(Race.start,1000);
+}
+Race.start = function(){
+	if(Race.state==2){alert('경기가 종료되었습니다.'); return;}
+	if(Race.timer){clearInterval(Race.timer);}
+	Race.state = 1;	
+	Race.dr.className = "state_"+Race.state;
+	
+	for(var i=0,m=Race.results.length;i<m;i++){
+		Race.results[i].innerHTML = 'GO!';
+	}
+	Race.timer = setInterval(Race.run,Race.intervalTime);
+}
+Race.stop = function(){
+	if(Race.timer){clearInterval(Race.timer);}
+}
+Race.finish = function(){
+	Race.state = 2;
+	Race.dr.className = "state_"+Race.state;	
+	Race.stop();
+	Race.showResult();	
+}
+Race.showResult = function(){
+	if(Race.state==2){
+		alert("## RACE : "+Race.title+" ##\n## 경기결과 ##\n"+Race.resultMsg());
+	}else{
+		alert('경기 종료 상태가 아닙니다.');
+	}
+}
+Race.resultMsg = function(){
+	var t = [];
+	for(var i=0,m=Race.endIndexes.length;i<m;i++){
+		t.push(' ['+(i+1)+'등] : '+Race.labels[ Race.endIndexes[i] ].value);
+	}
+	return t.join("\n");
+}
+Race.run = function(){
+	if(Race.horses.length==0){Race.stop();}
+	
+	for(var i=0,m=Race.horses.length;i<m;i++){
+		var H = Race.horses[i];
+		var ml = parseFloat(H.style.left);
+		if(ml >= 100){
+				continue;
+			}
+		var rmd = Math.random()*Race.maxRange;
+		var ml2 = ml+rmd;
+		if(ml2 > 100){ml2 = 100;}
+		H.style.left = ml2+'%';
+		if(ml2==100){
+			++Race.endCnt;
+			Race.endIndexes.push(i);
+			if(Race.endCnt==1){
+				Race.results[i].innerHTML='<span class="result_1">1등</span>';
+			}else if(Race.endCnt==2){
+				Race.results[i].innerHTML='<span class="result_2">2등</span>';
+			}else if(Race.endCnt==3){
+				Race.results[i].innerHTML='<span class="result_3">3등</span>';
+			}else{
+				Race.results[i].innerHTML=Race.endCnt+'등';
+			}
+			
+		}
+	}
+	if(Race.endCnt == Race.horses.length){
+		Race.finish();
+	}
+}
+Race.addLine = function(label){
+	if(Race.state==1){alert('경기 진행중에는 추가할 수 없습니다.'); return;}
+	if(!label){ label ='';}
+	var dr = document.getElementById('div_race');
+	var tbody = dr.getElementsByTagName('tbody')[0];
+	var t = dr.getElementsByTagName('tr');
+	var tr = t[t.length-1];
+	var trc = tr.cloneNode(true)
+	var label = trc.getElementsByTagName('input')[0];
+	label.value='';	
+	tbody.appendChild(trc);
+	Race.init();
+}
+Race.removeLine = function(){
+	if(Race.state==1){alert('경기 진행중에는 삭제할 수 없습니다.'); return;}	
+	var dr = document.getElementById('div_race');
+	var t = dr.getElementsByTagName('tr');
+	var tr = t[t.length-1];
+	if(t.length<2){alert('1라인 미만으로 줄일 수 없습니다.'); return;}
+	tr.parentNode.removeChild(tr);
+	Race.init();
+}
+Race.setLabel = function(index,label){
+	if(index in Race.labels){
+		Race.labels[index].value = label;
+	}
+}
+Race.init();
+/**
+* 초기화 부분
+*/
+var qstr = window.location.search;
+//--- 타이틀
+var race_titlestr = qstr.match(/race_title=([^&]*)(?:&|$)/)
+if(race_titlestr && race_titlestr[1] && race_titlestr[1].length>0){
+	race_title = decodeURIComponent(race_titlestr[1].replace(/\+/g,' '))
+	document.getElementById('title').innerHTML = race_title;
+	document.title = race_title;
+	document.form_custom.race_title.value = race_title;
+	Race.title = race_title;
+}
+//--- 라인 세팅
+var labelstr = qstr.match(/labels=([^&]*)(?:&|$)/)
+if(labelstr && labelstr[1] && labelstr[1].length>0){
+	labelstr = decodeURIComponent(labelstr[1].replace(/\+/g,' '))
+	document.form_custom.labels.value = labelstr;
+	var labels = labelstr.replace(/(\r\n|\r|\n)/g,',').split(',');
+	//var labels = labelstr.split(/(,|\r\n|\r|\n)/);
+
+	for(var i=0,m=labels.length-1;i<m;i++){
+		if(labels[i].length==0){continue;}
+		Race.addLine();
+	}
+	for(var i=0,m=labels.length;i<m;i++){
+		if(labels[i].length==0){continue;}
+		Race.setLabel(i,labels[i])
+	}	
+}else{
+	Race.addLine();
+	Race.addLine();
+}
+
+</script>
+</body>
+</html>
