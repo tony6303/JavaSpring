@@ -12,6 +12,7 @@
 </head>
 <body>
 <ul>
+	<li><a href="<%=contextPath%>/index.jsp">인덱스</a></li>
 	<li><a href="<%=contextPath%>/user?gubun=login">로그인</a></li>
 	<li><a href="<%=contextPath%>/user?gubun=join">회원가입</a></li>
 	<li><a href="<%=contextPath%>/user?gubun=selectOne">유저정보보기</a></li>

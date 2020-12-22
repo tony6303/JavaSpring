@@ -1,30 +1,19 @@
-package com.cos.hello.controller;
+package com.cos.shop.controller;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
-//javax 로 시작하는 패키지는 톰캣이 갖고있는 라이브러리이다.
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Response;
+import com.cos.shop.model.Users;
 
-import com.cos.hello.model.Users;
-
-public class UserController extends HttpServlet {
-	// 12월 21알 월요일
-	// req , res는 톰캣이 만들어줌. (클라이언트의 요청이 있을 때 마다)
-	// req는 Reader 할 수 있는 ByteStream 요청
-	// res는 Writer 할 수 있는 ByteStream 응답
-	// http://localhost:8000/hello/user?gubun=login
-
+public class SessionController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String gubun = req.getParameter("gubun");
-//		route(gubun, req, resp);
 		System.out.println("doGet실행됨");
 		doProcess(req, resp);
 	}
@@ -36,25 +25,31 @@ public class UserController extends HttpServlet {
 	}
 
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//      super.doGet(req, resp);
-		System.out.println("UserController 실행됨");
-
+		System.out.println("SessionController실행됨");
 		String gubun = req.getParameter("gubun");
 		System.out.println(gubun);
+
 		route(gubun, req, resp);
+
 	}
 
 	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		if (gubun.equals("session")) { //세션 만들기
 
-		if (gubun.equals("login")) {
-			resp.sendRedirect("auth/login.jsp");
-		} else if (gubun.equals("join")) {
-			resp.sendRedirect("auth/join.jsp");
-		} else if (gubun.equals("selectOne")) {
+			resp.sendRedirect("session/session.jsp");
+		} else if (gubun.equals("cookieDelete")) {
+			
+			resp.sendRedirect("session/session.jsp");
+		}
+		
+		
+		
+		
+		else if (gubun.equals("session123")) {
 			// 인증이 필요한 페이지
 			HttpSession session = req.getSession();
 			if (session.getAttribute("sessionUser") != null) {
-				//getAttribute : name이란 이름에 해당되는 속성값을 Object타입으로 반환합니다. 없으면 null로 반환
+				// getAttribute : name이란 이름에 해당되는 속성값을 Object타입으로 반환합니다. 없으면 null로 반환
 				Users user = (Users) session.getAttribute("sessionUser");
 				System.out.println("인증된 사용자입니다.");
 				System.out.println(user);
@@ -63,7 +58,7 @@ public class UserController extends HttpServlet {
 			}
 
 			resp.sendRedirect("/hello/user/selectOne.jsp");
-			//쿠키 읽기 (클라이언트에 저장된 모든 쿠키를 읽어옴)
+			// 쿠키 읽기 (클라이언트에 저장된 모든 쿠키를 읽어옴)
 			Cookie[] c = req.getCookies();
 			if (c != null) {
 				for (int i = 0; i < c.length; ++i) {
@@ -97,13 +92,6 @@ public class UserController extends HttpServlet {
 			resp.sendRedirect("index.jsp");
 
 		} else if (gubun.equals("loginProc")) {
-//					    	  new Cookie(name, value)
-			//new 쿠키
-			Cookie myCookie = new Cookie("CookieName", "What a delicious cookie");
-			//쿠키 세팅 (안해주면 오류나더라 왜지? new하면서 초기화됬는데.) 
-			myCookie.setValue("Wow");
-			//쿠키 전달 (클라이언트에 저장됨)
-			resp.addCookie(myCookie);
 
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
@@ -112,17 +100,14 @@ public class UserController extends HttpServlet {
 			System.out.println(password);
 			System.out.println("=========loginPorc End=========");
 			// 2번 DB값이 있는지 select 해서 확인 (생략)
-			Users user = Users.builder()
-					.id(1)
-					.username(username)
-					.build();
+			Users user = Users.builder().id(1).username(username).build();
 			// session에는 사용자 패스워드 절대넣지않기
 			// 3번 세션 키 발급
 			HttpSession session = req.getSession();
-			
-			//setAttribute : name으로 지정한 이름에 value값을 할당합니다.
+
+			// setAttribute : name으로 지정한 이름에 value값을 할당합니다.
 			session.setAttribute("sessionUser", user); // name , value
-			
+
 //			resp.setHeader("Set-Cookie", "sessionKey=9998");
 			// 4번 index.jsp로 이동
 			resp.sendRedirect("index.jsp");

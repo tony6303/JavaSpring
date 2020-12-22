@@ -15,10 +15,25 @@ public class BoardController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("doGet실행됨");
+		doProcess(req, resp);
+
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("doPost실행됨");
+		doProcess(req, resp);
+	}
+	
+	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("BoardController 실행됨");
-		
 		String gubun = req.getParameter("gubun");
 		System.out.println(gubun);
+		route(gubun, req, resp);
+	}
+	
+	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		if(gubun.equals("insertOne")) {
 			resp.sendRedirect("board/insertOne.jsp");
@@ -29,7 +44,6 @@ public class BoardController extends HttpServlet{
 		}else if(gubun.equals("updateOne")) {
 			resp.sendRedirect("board/updateOne.jsp");
 		}
-
 	}
 }
 
