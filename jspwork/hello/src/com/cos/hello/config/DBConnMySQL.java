@@ -18,7 +18,7 @@ public class DBConnMySQL{
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource)envContext.lookup("mysql/ssar");
 			Connection conn = ds.getConnection();
-			System.out.println("연결성공");
+			System.out.println("DB연결 성공");
 			return conn;
 		} catch (NamingException e) {
 			System.out.println("DB연결 실패");

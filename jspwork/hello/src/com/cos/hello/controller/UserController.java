@@ -1,8 +1,6 @@
 package com.cos.hello.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -14,11 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cos.hello.config.DBConnMySQL;
-import com.cos.hello.config.DBConnOracle;
-import com.cos.hello.dao.UsersDao;
 import com.cos.hello.model.Users;
-import com.cos.hello.service.UsersJoinService;
+import com.cos.hello.service.UsersService;
 
 public class UserController extends HttpServlet {
 	// 12월 21알 월요일
@@ -59,92 +54,27 @@ public class UserController extends HttpServlet {
 	}
 
 	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException, SQLException {
-
+		UsersService usersService = new UsersService();
+		
 		if (gubun.equals("login")) {
-			resp.sendRedirect("auth/login.jsp");
+			resp.sendRedirect("auth/login.jsp"); //loginProc 버튼
 		} else if (gubun.equals("join")) {
-			resp.sendRedirect("auth/join.jsp");
+			resp.sendRedirect("auth/join.jsp"); // joinProc 버튼
 		} else if (gubun.equals("selectOne")) {
-			// 인증이 필요한 페이지
-			String result;
-			HttpSession session = req.getSession();
-			if (session.getAttribute("sessionUser") != null) {
-				//getAttribute : name이란 이름에 해당되는 속성값을 Object타입으로 반환합니다. 없으면 null로 반환
-				Users user = (Users) session.getAttribute("sessionUser");
-				result = "인증 되었습니다.";
-				System.out.println("인증된 사용자입니다.");
-				System.out.println(user);
-			} else {
-				result = "인증되지 않았습니다.";
-				System.out.println("인증되지 않았습니다.");
-			}
-			
-			req.setAttribute("result", result);
-			
-			// xxx.jsp로 이동할겁니다 라는 객체
-			RequestDispatcher dis = req.getRequestDispatcher("user/selectOne.jsp");
-			
-			// 덮어쓰기
-			dis.forward(req, resp);
-			
-//			resp.sendRedirect("/hello/user/selectOne.jsp");
-			//쿠키 읽기 (클라이언트에 저장된 모든 쿠키를 읽어옴)
-//			Cookie[] c = req.getCookies();
-//			if (c != null) {
-//				for (int i = 0; i < c.length; ++i) {
-//					if (c[i].getName().equals("CookieName")) {
-//						System.out.println(c[i].getName());
-//						System.out.println(c[i].getValue()); // session key
-//					}
-//				}
-//			}
-
+			usersService.유저정보보기(req, resp);
 		} else if (gubun.equals("updateOne")) {
-			resp.sendRedirect("/hello/user/updateOne.jsp");
+			usersService.유저정보수정페이지(req, resp);
 		} else if (gubun.equals("joinProc")) { 
-			UsersJoinService usersJoinService = new UsersJoinService();
-			usersJoinService.회원가입(req, resp);			
-			
-			HttpSession session = req.getSession();
-			session.setAttribute("sessionKey", "9990");
-			resp.setHeader("Set-Cookie", "sessionKey=9990");
-//			resp.sendRedirect("index.jsp");
-
+			usersService.회원가입(req, resp);
 		} else if (gubun.equals("loginProc")) {
-			
+			usersService.로그인(req, resp);
 			//SELECT id, username, email From users where username = ? and password = ?
 			//DAO 함수명 : login() , return -> Users Object
 			//정상 -> 세션을 담고 index.jsp , 비정상 -> login.jsp
-//					    	  new Cookie(name, value)
-			//new 쿠키
-			Cookie myCookie = new Cookie("CookieName", "What a delicious cookie");
-			//쿠키 세팅 (안해주면 오류나더라 왜지? new하면서 초기화됬는데.) 
-			myCookie.setValue("Wow");
-			//쿠키 전달 (클라이언트에 저장됨)
-			resp.addCookie(myCookie);
-
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
-			System.out.println("=========loginPorc Start=========");
-			System.out.println(username);
-			System.out.println(password);
-			System.out.println("=========loginPorc End=========");
-			// 2번 DB값이 있는지 select 해서 확인 (생략)
-			Users user = Users.builder()
-					.id(1)
-					.username(username)
-					.build();
-			// session에는 사용자 패스워드 절대넣지않기
-			// 3번 세션 키 발급
-			HttpSession session = req.getSession();
-			
-			//setAttribute : name으로 지정한 이름에 value값을 할당합니다.
-			session.setAttribute("sessionUser", user); // name , value
-			
-//			resp.setHeader("Set-Cookie", "sessionKey=9998");
-			// 4번 index.jsp로 이동
-			resp.sendRedirect("index.jsp");
-
+		} else if(gubun.equals("updateProc")) {
+			usersService.유저정보수정(req,resp);
+		} else if (gubun.equals("deleteProc")) {
+			usersService.유저정보삭제(req,resp);
 		}
 	}
 }
