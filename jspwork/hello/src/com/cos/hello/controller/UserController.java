@@ -18,6 +18,7 @@ import com.cos.hello.config.DBConnMySQL;
 import com.cos.hello.config.DBConnOracle;
 import com.cos.hello.dao.UsersDao;
 import com.cos.hello.model.Users;
+import com.cos.hello.service.UsersJoinService;
 
 public class UserController extends HttpServlet {
 	// 12월 21알 월요일
@@ -101,31 +102,8 @@ public class UserController extends HttpServlet {
 		} else if (gubun.equals("updateOne")) {
 			resp.sendRedirect("/hello/user/updateOne.jsp");
 		} else if (gubun.equals("joinProc")) { 
-			
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
-			String email = req.getParameter("email");
-
-			System.out.println("=========joinPorc Start=========");
-			System.out.println(username);
-			System.out.println(password);
-			System.out.println(email);
-			System.out.println("=========joinPorc End=========");
-			// 2번 DB에 연결해서 3가지 값을 INSERT하기
-			Users user = Users.builder()
-					.username(username)
-					.password(password)
-					.email(email)
-					.build();
-			
-			UsersDao usersDao = new UsersDao();
-			int result = usersDao.insert(user);
-			
-			if(result == 1) {
-	               resp.sendRedirect("auth/login.jsp");
-	            } else {
-	               resp.sendRedirect("auth/join.jsp");
-	            }
+			UsersJoinService usersJoinService = new UsersJoinService();
+			usersJoinService.회원가입(req, resp);			
 			
 			HttpSession session = req.getSession();
 			session.setAttribute("sessionKey", "9990");
@@ -133,6 +111,10 @@ public class UserController extends HttpServlet {
 //			resp.sendRedirect("index.jsp");
 
 		} else if (gubun.equals("loginProc")) {
+			
+			//SELECT id, username, email From users where username = ? and password = ?
+			//DAO 함수명 : login() , return -> Users Object
+			//정상 -> 세션을 담고 index.jsp , 비정상 -> login.jsp
 //					    	  new Cookie(name, value)
 			//new 쿠키
 			Cookie myCookie = new Cookie("CookieName", "What a delicious cookie");
