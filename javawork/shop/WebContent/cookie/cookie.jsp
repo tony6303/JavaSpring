@@ -7,6 +7,8 @@
 <title>쿠키 먹기</title>
 </head>
 <body>
+<h1>쿠키 확인하기</h1>
+<a href="../index.jsp">인덱스로 돌아가기</a><br>
 <%
 Cookie cookieValue[] = request.getCookies();
     if(cookieValue != null){

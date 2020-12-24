@@ -27,8 +27,11 @@
 		<li><a href="<%=contextPath %>/index.jsp">인덱스</a></li>
 		<li><a href="<%=contextPath %>/cookie?gubun=cookie">쿠키먹기</a></li>
 		<li><a href="<%=contextPath %>/session?gubun=session">세션만들기</a></li>
+		<li><a href="<%=contextPath %>/session?gubun=sessionCheck">세션확인하기</a></li>
 		<li><a href="<%=contextPath %>/cookie?gubun=cookieDelete">쿠키 지우기</a></li>
 		<li><a href="<%=contextPath %>/session?gubun=sessionDelete">세션 지우기</a></li>
+		<li><a href="<%=contextPath %>/session?gubun=examRequest">Request실습</a></li>
+		<li><a href="example1/implicitExample3.html">193쪽 3번 예제</a></li>
 	</ul>
 </body>
 </html>

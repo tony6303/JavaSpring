@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.SendResult;
 
 import com.cos.shop.model.Users;
 
@@ -34,64 +35,38 @@ public class SessionController extends HttpServlet{
 	}
 
 	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		if (gubun.equals("session")) { //세션 만들기
-
-			resp.sendRedirect("session/session.jsp");
-		} else if (gubun.equals("cookieDelete")) {
+		if (gubun.equals("session")) { //세션 만들기 페이지 이동
 			
 			resp.sendRedirect("session/session.jsp");
-		}
+		} 
 		
-		
-		
-		
-		else if (gubun.equals("session123")) {
+		else if (gubun.equals("sessionCheck")) {  // 세션 확인하기 페이지 이동
 			// 인증이 필요한 페이지
 			HttpSession session = req.getSession();
 			if (session.getAttribute("sessionUser") != null) {
 				// getAttribute : name이란 이름에 해당되는 속성값을 Object타입으로 반환합니다. 없으면 null로 반환
+				// Users로 다운캐스팅 하여 변수에 저장
 				Users user = (Users) session.getAttribute("sessionUser");
+
 				System.out.println("인증된 사용자입니다.");
 				System.out.println(user);
 			} else {
 				System.out.println("인증되지 않았습니다.");
 			}
 
-			resp.sendRedirect("/hello/user/selectOne.jsp");
+			resp.sendRedirect("/shop/session/sessionCheck.jsp");
 			// 쿠키 읽기 (클라이언트에 저장된 모든 쿠키를 읽어옴)
-			Cookie[] c = req.getCookies();
-			if (c != null) {
-				for (int i = 0; i < c.length; ++i) {
-					if (c[i].getName().equals("CookieName")) {
-						System.out.println(c[i].getName());
-						System.out.println(c[i].getValue()); // session key
-					}
-				}
-			}
+//			Cookie[] c = req.getCookies();
+//			if (c != null) {
+//				for (int i = 0; i < c.length; ++i) {
+//					if (c[i].getName().equals("CookieName")) {
+//						System.out.println(c[i].getName());
+//						System.out.println(c[i].getValue()); // session key
+//					}
+//				}
+//			}
 
-		} else if (gubun.equals("updateOne")) {
-			resp.sendRedirect("/hello/user/updateOne.jsp");
-		} else if (gubun.equals("joinProc")) { // 회원가입수행해줘
-			// 데이터 원형 username=ssar&password=1234&email=ssar@nate.com
-			// 1번 form의 input태그에 있는 3가지 값 username, passeword, email받기
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
-			String email = req.getParameter("email");
-
-			System.out.println("=========joinPorc Start=========");
-			System.out.println(username);
-			System.out.println(password);
-			System.out.println(email);
-			System.out.println("=========joinPorc End=========");
-			// 2번 DB에 연결해서 3가지 값을 INSERT하기
-			// 생략
-			// 3번 INSERT가 정상적으로 되었다면 index.jsp
-			HttpSession session = req.getSession();
-			session.setAttribute("sessionKey", "9990");
-			resp.setHeader("Set-Cookie", "sessionKey=9990");
-			resp.sendRedirect("index.jsp");
-
-		} else if (gubun.equals("loginProc")) {
+		}  else if (gubun.equals("loginProc")) {
 
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
@@ -112,6 +87,8 @@ public class SessionController extends HttpServlet{
 			// 4번 index.jsp로 이동
 			resp.sendRedirect("index.jsp");
 
+		} else if (gubun.equals("examRequest")) {
+			resp.sendRedirect("request.jsp");
 		}
 	}
 }

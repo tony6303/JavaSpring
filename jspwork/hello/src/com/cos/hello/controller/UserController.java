@@ -1,7 +1,11 @@
 package com.cos.hello.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 //javax 로 시작하는 패키지는 톰캣이 갖고있는 라이브러리이다.
@@ -10,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Response;
-
+import com.cos.hello.config.DBConnMySQL;
+import com.cos.hello.config.DBConnOracle;
+import com.cos.hello.dao.UsersDao;
 import com.cos.hello.model.Users;
 
 public class UserController extends HttpServlet {
@@ -41,10 +46,18 @@ public class UserController extends HttpServlet {
 
 		String gubun = req.getParameter("gubun");
 		System.out.println(gubun);
-		route(gubun, req, resp);
+		try {
+			route(gubun, req, resp);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
-	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException, SQLException {
 
 		if (gubun.equals("login")) {
 			resp.sendRedirect("auth/login.jsp");
@@ -52,33 +65,43 @@ public class UserController extends HttpServlet {
 			resp.sendRedirect("auth/join.jsp");
 		} else if (gubun.equals("selectOne")) {
 			// 인증이 필요한 페이지
+			String result;
 			HttpSession session = req.getSession();
 			if (session.getAttribute("sessionUser") != null) {
 				//getAttribute : name이란 이름에 해당되는 속성값을 Object타입으로 반환합니다. 없으면 null로 반환
 				Users user = (Users) session.getAttribute("sessionUser");
+				result = "인증 되었습니다.";
 				System.out.println("인증된 사용자입니다.");
 				System.out.println(user);
 			} else {
+				result = "인증되지 않았습니다.";
 				System.out.println("인증되지 않았습니다.");
 			}
-
-			resp.sendRedirect("/hello/user/selectOne.jsp");
+			
+			req.setAttribute("result", result);
+			
+			// xxx.jsp로 이동할겁니다 라는 객체
+			RequestDispatcher dis = req.getRequestDispatcher("user/selectOne.jsp");
+			
+			// 덮어쓰기
+			dis.forward(req, resp);
+			
+//			resp.sendRedirect("/hello/user/selectOne.jsp");
 			//쿠키 읽기 (클라이언트에 저장된 모든 쿠키를 읽어옴)
-			Cookie[] c = req.getCookies();
-			if (c != null) {
-				for (int i = 0; i < c.length; ++i) {
-					if (c[i].getName().equals("CookieName")) {
-						System.out.println(c[i].getName());
-						System.out.println(c[i].getValue()); // session key
-					}
-				}
-			}
+//			Cookie[] c = req.getCookies();
+//			if (c != null) {
+//				for (int i = 0; i < c.length; ++i) {
+//					if (c[i].getName().equals("CookieName")) {
+//						System.out.println(c[i].getName());
+//						System.out.println(c[i].getValue()); // session key
+//					}
+//				}
+//			}
 
 		} else if (gubun.equals("updateOne")) {
 			resp.sendRedirect("/hello/user/updateOne.jsp");
-		} else if (gubun.equals("joinProc")) { // 회원가입수행해줘
-			// 데이터 원형 username=ssar&password=1234&email=ssar@nate.com
-			// 1번 form의 input태그에 있는 3가지 값 username, passeword, email받기
+		} else if (gubun.equals("joinProc")) { 
+			
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
 			String email = req.getParameter("email");
@@ -89,12 +112,25 @@ public class UserController extends HttpServlet {
 			System.out.println(email);
 			System.out.println("=========joinPorc End=========");
 			// 2번 DB에 연결해서 3가지 값을 INSERT하기
-			// 생략
-			// 3번 INSERT가 정상적으로 되었다면 index.jsp
+			Users user = Users.builder()
+					.username(username)
+					.password(password)
+					.email(email)
+					.build();
+			
+			UsersDao usersDao = new UsersDao();
+			int result = usersDao.insert(user);
+			
+			if(result == 1) {
+	               resp.sendRedirect("auth/login.jsp");
+	            } else {
+	               resp.sendRedirect("auth/join.jsp");
+	            }
+			
 			HttpSession session = req.getSession();
 			session.setAttribute("sessionKey", "9990");
 			resp.setHeader("Set-Cookie", "sessionKey=9990");
-			resp.sendRedirect("index.jsp");
+//			resp.sendRedirect("index.jsp");
 
 		} else if (gubun.equals("loginProc")) {
 //					    	  new Cookie(name, value)
