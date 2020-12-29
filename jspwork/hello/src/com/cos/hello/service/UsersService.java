@@ -1,7 +1,6 @@
 package com.cos.hello.service;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,58 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cos.hello.dao.UsersDao;
+import com.cos.hello.dto.JoinDto;
+import com.cos.hello.dto.LoginDto;
 import com.cos.hello.model.Users;
 import com.cos.hello.util.Script;
 
 public class UsersService {
 	public void 회원가입(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
-		//input 에서 값을 받아옴
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		String email = req.getParameter("email");
-
-		System.out.println("=========joinProc Start=========");
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(email);
-		System.out.println("=========joinProc End=========");
-		// 2번 DB에 연결해서 3가지 값을 INSERT하기
-		// input 값을 토대로 Users 빌드
-		Users user = Users.builder()
-				.username(username)
-				.password(password)
-				.email(email)
-				.build();
+		JoinDto joindto = (JoinDto)req.getAttribute("dto"); // joinFilter 에서 setAttribute 함
 		
 		// insert 함수 실행 (sql로 데이터베이스에 insert)  
 		UsersDao usersDao = new UsersDao();
-		int result = usersDao.insert(user); //pstmt               // UserDao
+		int result = usersDao.insert(joindto); //pstmt               // UserDao
 		
 		if(result == 1) {
-               resp.sendRedirect("auth/login.jsp");
+//               resp.sendRedirect("auth/login.jsp");
+               Script.href(resp, "auth/login.jsp", "회원가입 성공");
             } else {
-               resp.sendRedirect("auth/join.jsp");
+//               resp.sendRedirect("auth/join.jsp");
+               Script.back(resp, "회원가입 실패 -1");
             }
 	}
 	
-	public Users 로그인(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		System.out.println("=========loginPorc Start=========");
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println("=========loginPorc End=========");
-		// 2번 DB값이 있는지 select 해서 확인
-		// login함수 의 매개변수를 만들어주기위한 빌드업 (Users 틀 만들기)
-		Users user = Users.builder()
-				.username(username)
-				.password(password)
-				.build();
-
+	public void 로그인(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
+		LoginDto logindto = (LoginDto)req.getAttribute("dto"); // loginFilter 에서 setAttribute 함
+		
 		// login 함수 실행 (sql로 데이터베이스에 select)
-		UsersDao usersDao = new UsersDao();
+//		UsersDao usersDao = new UsersDao();
 		//login 의 반환형이 Users
-		Users userEntity = usersDao.login(user);       // UserDao
+		Users userEntity = UsersDao.getInstance().login(logindto);
 		
 		if(userEntity != null) {
 			// session에는 사용자 패스워드 절대넣지않기
@@ -79,12 +55,11 @@ public class UsersService {
 			// http header 에 context-type
 			
 //			resp.sendRedirect("index.jsp"); 데이터를 들고 이동하는게 아니고 그냥 페이지이동만하는 기능.(필요없음)
-			return user;
+			
 		}else {
 			Script.back(resp, "로그인실패 -1");
-			resp.sendRedirect("auth/login.jsp");
 		}
-		return null;
+		
 	}
 	
 	public void 유저정보보기(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ServletException {

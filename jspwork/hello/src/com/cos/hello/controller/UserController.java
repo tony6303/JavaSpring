@@ -54,7 +54,9 @@ public class UserController extends HttpServlet {
 	}
 
 	private void route(String gubun, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException, SQLException {
+		resp.setCharacterEncoding("utf-8");
 		UsersService usersService = new UsersService();
+		
 		
 		if (gubun.equals("login")) {
 			resp.sendRedirect("auth/login.jsp"); //loginProc 버튼

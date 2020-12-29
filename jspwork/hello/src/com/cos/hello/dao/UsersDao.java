@@ -6,11 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.cos.hello.config.DBConnMySQL;
+import com.cos.hello.dto.JoinDto;
+import com.cos.hello.dto.LoginDto;
 import com.cos.hello.model.Users;
 
 public class UsersDao {
+	
+	private static UsersDao instance = new UsersDao();
+
+	public static UsersDao getInstance() {
+		return instance;
+	}
 	//(String username,String password,String email)
-	public int insert(Users users) throws SQLException {// 회원가입수행해줘
+	public int insert(JoinDto joindto) throws SQLException {// 회원가입수행해줘
 		// 1번 form의 input태그에 있는 3가지 값 username, passeword, email받기
 			
 		StringBuffer sb = new StringBuffer();
@@ -20,9 +28,9 @@ public class UsersDao {
 		Connection conn = DBConnMySQL.getInstance();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, users.getUsername());
-			pstmt.setString(2, users.getPassword());
-			pstmt.setString(3, users.getEmail());
+			pstmt.setString(1, joindto.getUsername());
+			pstmt.setString(2, joindto.getPassword());
+			pstmt.setString(3, joindto.getEmail());
 			int result2 = pstmt.executeUpdate(); // 변경된 row count를 리턴, 오류 시 -1를 리턴
 			
 //			pstmt.executeUpdate();
@@ -41,15 +49,15 @@ public class UsersDao {
 		return -1;
 	}
 	
-	public Users login(Users users) throws SQLException {
+	public Users login(LoginDto loginDto) throws SQLException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("SELECT id, username, password, email FROM users WHERE username = ? AND password = ?");
 		String sql = sb.toString();
 		Connection conn = DBConnMySQL.getInstance();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, users.getUsername());
-			pstmt.setString(2, users.getPassword());
+			pstmt.setString(1, loginDto.getUsername());
+			pstmt.setString(2, loginDto.getPassword());
 //			int result2 = pstmt.executeQuery(sql); // 변경된 row count를 리턴, 오류 시 -1를 리턴
 //			System.out.println("result2 : " + result2);
 			ResultSet rs = pstmt.executeQuery();
