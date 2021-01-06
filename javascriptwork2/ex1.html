@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="script1.js">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="script1.js"></script> -->
+    <title>Document</title>
+</head>
+<body>
+    <p>첫번쨰 p</p>
+    <p>두번째 p</p>
+    <button id="hide">hide</button>
+    <button id="show">show</button>
+    <script>
+        var a = document.querySelector("#hide");
+
+// a.addEventListener("click",function(){
+//     var b = document.querySelector("p");
+//     b.remove();
+// });
+
+$("#hide").click(function(){
+    $("p").hide();
+});
+$("#show").click(function(){
+    $("p").show();
+});
+    </script>
+</body>
+</html>
